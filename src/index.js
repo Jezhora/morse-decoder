@@ -37,27 +37,42 @@ const MORSE_TABLE = {
     '-----':  '0',
 };
 
-let str = '000000111100000000100000100011';
+let str = '00000011110000000010';
 // console.log(str.split('0'))
 
 function decode(expr) {
   // write your solution here
-  
+  const lengthCode = 10;
   let divideCode = [];
-
-  for (let i = 0; i < expr.length; i += 10) {
-
-    divideCode.push(expr.slice(i, i + 10 ))
- 
-  }
+  let message = ''
   
+  for (let i = 0; i < expr.length; i += lengthCode) {
 
-  console.log(divideCode)
+    divideCode.push(expr.slice(i, i + lengthCode ))
+  }
+
+  for (let j = 0; j < divideCode.length; j++){
+
+    for(let k = 0; k < lengthCode; k += 2){
+
+      divideCode[j] = divideCode[j].replace('00', '').replace('11', '-').replace('10', '.')
+    }
+    
+  }
+
+  divideCode.forEach(item => {
+    for( key in MORSE_TABLE){
+      if(item === key){
+        message += `${MORSE_TABLE[key]}`
+      }
+    }
+  })
+  
+  return message.trim()
  
 }
-decode(str)
 
-// replace('11','-').replace('10','.').replace('00','')
+
 
 module.exports = {
     decode
