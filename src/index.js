@@ -37,27 +37,9 @@ const MORSE_TABLE = {
     '-----':  '0',
 };
 
-let str = '000000111100000000100000100011';
-// console.log(str.split('0'))
-
 function decode(expr) {
-  // write your solution here
-  
-  let divideCode = [];
-
-  for (let i = 0; i < expr.length; i += 10) {
-
-    divideCode.push(expr.slice(i, i + 10 ))
- 
-  }
-  
-
-  console.log(divideCode)
- 
+    // write your solution here
 }
-decode(str)
-
-// replace('11','-').replace('10','.').replace('00','')
 
 module.exports = {
     decode
